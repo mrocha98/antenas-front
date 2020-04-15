@@ -1,8 +1,14 @@
 import React from 'react';
+import Menu from './components/Menu';
 import Routes from './routes';
 
 function App() {
-  return <Routes />;
+  return (
+    <>
+      <Menu />
+      <Routes />
+    </>
+  );
 }
 
 export default App;

@@ -66,6 +66,7 @@ export default createGlobalStyle`
       /* Large screens */
       @media only screen and (min-width: 600px) {
         margin: 0.75rem 5rem;
+        margin-left: 10rem;
         padding-bottom: 5%;
       }
     }

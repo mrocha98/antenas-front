@@ -8,8 +8,8 @@ ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <App />
-      <GlobalStyles />
     </BrowserRouter>
+    <GlobalStyles />
   </React.StrictMode>,
   document.getElementById('root')
 );
