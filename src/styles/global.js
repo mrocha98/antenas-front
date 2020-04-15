@@ -13,30 +13,32 @@ export default createGlobalStyle`
   }
 
   body {
-  --deep-carmine: #A4243B;
-  --dark-vanilla: #D8C99B;
-  --gainsboro: #EADEDA;
-  --eerie-black: #121420;
-  --dark-sea-green: #7EBC89;
+    --jet: #333333;
+    --anti-flash-white: #eff1f3;
+    --snow: #fcfaf9;
+    --puce: #cc8b86;
+    --medium-spring-green: #20fc8f;
 
-    background: var(--dark-vanilla);
+    background: var(--snow);
     -webkit-font-smoothing: antialiased !important;
 
     &::-webkit-scrollbar {
       width: 0.25rem;
     }
 
+    /* fundo do scroll */
     &::-webkit-scrollbar-track {
-      background: var(--gainsboro);
+      background: var(--anti-flash-white);
     }
 
+    /* barrinha do scroll */
     &::-webkit-scrollbar-thumb {
-      background: var(--eerie-black);
+      background: var(--jet);
     }
   }
 
   body, input, textarea, button {
-    color: var(--eerie-black);
+    color: var(--jet);
     font-size: 16px;
     font-family: 'Nunito', sans-serif;
   }
