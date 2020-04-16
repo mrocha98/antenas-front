@@ -13,7 +13,7 @@ Antes de tudo, instale as seguintes ferramentas:
 1. [NodeJS](https://nodejs.org/en/) (se você utiliza Linux ou Mac, recomendamos o [NVM](https://github.com/nvm-sh/nvm))
 2. [Yarn](https://yarnpkg.com/getting-started/install)
 
-Agora, clone o projeto no diretório de sua preferência:
+Clone o projeto no diretório de sua preferência:
 
 ```bash
 git clone https://github.com/mrocha98/projeto-antenas-react
@@ -27,3 +27,15 @@ yarn start
 ```
 
 Seu navegador padrão abrirá uma nova guia com o projeto em ambiente de desenvolvimento!
+
+## Como contribuir com o projeto
+
+Sempre abra uma branch à partir da developer.
+
+Faça um merge local da sua branch de feature na developer antes de abrir um Pull Request.
+
+Nós utilizamos algumas ferramentas de padronização para commit, basta que você execute `git commit` (sem o -m), seu terminal abrirá um menu de opções, escolha a categoria do commit e faça um breve comentário das suas mudanças.
+
+Em caso de dúvidas, assista esse vídeo:
+
+[![Padronizando mensagens de commit do Git - RocketSeat](https://i.ytimg.com/vi/erInHkjxkL8/maxresdefault.jpg)](https://www.youtube.com/watch?v=erInHkjxkL8)
