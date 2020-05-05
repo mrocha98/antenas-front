@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Ghost } from 'react-kawaii';
+import api from '../../services/api';
 import { Container } from './styles';
 
 export default function Home() {
@@ -8,9 +9,32 @@ export default function Home() {
   const handleMouseEnter = () => setGhostMood('blissful');
   const handleMouseLeave = () => setGhostMood('happy');
 
+  async function fetchData() {
+    console.log('aaaaa');
+    const req = await api.post('/graphql', {
+      query: `query { projects {
+          _id
+          title
+          quickDescription
+          fullDescription
+          techDescription
+          linkOne
+          linkTwo
+          step
+          cadiOwner
+          teacherOwner
+          productOwner
+        } }`,
+    });
+    console.log('req dos mlk', req.data);
+  }
+
   return (
     <Container className="page">
       <h1>Home Page</h1>
+      <button type="button" onClick={fetchData}>
+        AAAAA
+      </button>
       <div
         className="ghost"
         onMouseEnter={handleMouseEnter}
