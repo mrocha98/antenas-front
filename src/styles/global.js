@@ -13,13 +13,7 @@ export default createGlobalStyle`
   }
 
   body {
-    --jet: #333333;
-    --anti-flash-white: #eff1f3;
-    --snow: #fcfaf9;
-    --puce: #cc8b86;
-    --medium-spring-green: #20fc8f;
-
-    background: var(--snow);
+    background: #fcfaf9;
     -webkit-font-smoothing: antialiased !important;
 
     &::-webkit-scrollbar {
@@ -28,19 +22,19 @@ export default createGlobalStyle`
 
     /* fundo do scroll */
     &::-webkit-scrollbar-track {
-      background: var(--anti-flash-white);
+      background: #eff1f3;
     }
 
     /* barrinha do scroll */
     &::-webkit-scrollbar-thumb {
-      background: var(--jet);
+      background: #333333;
     }
   }
 
   body, input, textarea, button {
-    color: var(--jet);
+    color: #333333;
     font-size: 16px;
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Roboto', sans-serif;
   }
 
   button {
