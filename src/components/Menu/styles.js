@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
 export const Nav = styled.nav`
-  --text-primary: var(--snow);
-  --text-secondary: var(--anti-flash-white);
-  --bg-primary: var(--jet);
-  --bg-secondary: var(--puce);
+  --text-primary: #fcfaf9;
+  --text-secondary: #eff1f3;
+  --bg-primary: #333333;
+  --bg-secondary: #cc8b86;
   --transition-speed: 400ms;
 
   position: fixed;
