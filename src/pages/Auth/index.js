@@ -5,7 +5,6 @@ import {
   Container,
   MCard,
   MCardContent,
-  MCardActions,
   MTypography,
   Title,
   FormContainer,
@@ -38,17 +37,15 @@ function Auth() {
                   <MTextField required label="Senha" type="password" />
                 </Field>
                 <Field>
-                  <MCardActions>
-                    <MButton
-                      variant="contained"
-                      color="primary"
-                      type="submit"
-                      size="large"
-                      onClick={() => window.alert('ronaldo')}
-                    >
-                      Confirmar
-                    </MButton>
-                  </MCardActions>
+                  <MButton
+                    variant="contained"
+                    color="primary"
+                    type="submit"
+                    size="large"
+                    onClick={() => window.alert('ronaldo')}
+                  >
+                    Confirmar
+                  </MButton>
                 </Field>
               </Form>
             </FormContainer>

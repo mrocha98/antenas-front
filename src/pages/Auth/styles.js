@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import {
   Card,
   CardContent,
-  CardActions,
   Typography,
   TextField,
   Button,
@@ -52,8 +51,6 @@ export const MCard = styled(Card)`
 `;
 
 export const MCardContent = styled(CardContent)``;
-
-export const MCardActions = styled(CardActions)``;
 
 export const MTypography = styled(Typography)`
   color: ${grayscale('#666')};
