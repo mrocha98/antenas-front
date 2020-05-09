@@ -1,11 +1,10 @@
 import React from 'react';
-import { Page } from '../../styles/page';
 
 function Dummy() {
   return (
-    <Page>
+    <article className="page">
       <h1>Dummy Page</h1>
-    </Page>
+    </article>
   );
 }
 
