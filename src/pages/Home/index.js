@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import { Ghost } from 'react-kawaii';
 import Button from '@material-ui/core/Button';
 import api from '../../services/api';
-import { Page } from '../../styles/page';
-import { GhostContainer } from './styles';
+import './styles.scss';
 
 export default function Home() {
   const [ghostMood, setGhostMood] = useState('happy');
@@ -32,18 +31,18 @@ export default function Home() {
   }
 
   return (
-    <Page>
+    <article className="page">
       <h1>Home Page</h1>
-      <Button variant="contained" onClick={fetchData}>
+      <Button variant="contained" color="primary" onClick={fetchData}>
         TESTE GRAPHQL
       </Button>
-      <GhostContainer
-        className="ghost"
+      <div
+        className="ghost-container"
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
         <Ghost size={240} mood={ghostMood} color="#E0E4E8" />
-      </GhostContainer>
+      </div>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sem lorem,
         consequat non dapibus sit amet, ultricies sit amet lorem. Aliquam
@@ -128,6 +127,6 @@ export default function Home() {
         luctus sagittis turpis quis viverra. Nunc sed porta est. Vestibulum
         pretium eget nulla sed mollis.
       </p>
-    </Page>
+    </article>
   );
 }

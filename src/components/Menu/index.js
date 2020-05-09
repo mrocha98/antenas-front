@@ -8,15 +8,22 @@ import {
   FaUserGraduate,
   FaSignOutAlt,
 } from 'react-icons/fa';
-import { Nav } from './styles';
+import { Typography } from '@material-ui/core';
+import './styles.scss';
 
 export default function Menu() {
   return (
-    <Nav className="navbar">
+    <nav className="navbar">
       <ul className="navbar-nav">
         <li className="logo">
           <div className="nav-link">
-            <span className="link-text logo-text">Antenas</span>
+            <Typography
+              component="span"
+              variant="h5"
+              className="link-text logo-text"
+            >
+              Antenas
+            </Typography>
             <FaSatelliteDish />
           </div>
         </li>
@@ -24,38 +31,48 @@ export default function Menu() {
         <li className="nav-item">
           <NavLink to="/cadi" className="nav-link">
             <FaCuttlefish />
-            <span className="link-text">CADI</span>
+            <Typography component="span" className="link-text">
+              CADI
+            </Typography>
           </NavLink>
         </li>
 
         <li className="nav-item">
           <NavLink to="/po" className="nav-link">
             <FaBriefcase />
-            <span className="link-text">Empresário</span>
+            <Typography component="span" className="link-text">
+              Empresário
+            </Typography>
           </NavLink>
         </li>
 
         <li className="nav-item">
           <NavLink to="/professor" className="nav-link">
             <FaUserGraduate />
-            <span className="link-text">Professor</span>
+            <Typography component="span" className="link-text">
+              Professor
+            </Typography>
           </NavLink>
         </li>
 
         <li className="nav-item">
           <NavLink to="/student" className="nav-link">
             <FaUserNinja />
-            <span className="link-text">Aluno</span>
+            <Typography component="span" className="link-text">
+              Aluno
+            </Typography>
           </NavLink>
         </li>
 
         <li className="nav-item">
-          <NavLink to="/" className="nav-link">
+          <NavLink to="/" exact className="nav-link">
             <FaSignOutAlt />
-            <span className="link-text">Sair</span>
+            <Typography component="span" className="link-text">
+              Sair
+            </Typography>
           </NavLink>
         </li>
       </ul>
-    </Nav>
+    </nav>
   );
 }

@@ -1,0 +1,71 @@
+@import './colors';
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  background: $gunmetal;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  color: $cultured;
+  -webkit-font-smoothing: antialiased !important;
+
+  &::-webkit-scrollbar {
+    width: 0.4rem;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $cultured;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $flame;
+  }
+}
+
+body,
+input,
+textarea,
+button {
+  font-size: 16px;
+  font-family: 'Roboto', sans-serif;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+#root .page {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-left: 5rem;
+  padding: 1rem;
+  text-align: center;
+
+  @media (max-width: 600px) {
+    margin: 0;
+    padding-bottom: 8rem;
+  }
+
+  p {
+    align-self: flex-start;
+    text-align: justify;
+  }
+}
