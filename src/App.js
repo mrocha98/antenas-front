@@ -1,6 +1,7 @@
 import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core';
-import Menu from './components/Menu';
+import { AuthProvider } from './contexts/auth';
 import Routes from './routes';
 import './styles/global.scss';
 
@@ -18,10 +19,13 @@ function App() {
   });
 
   return (
-    <ThemeProvider theme={theme}>
-      <Menu />
-      <Routes />
-    </ThemeProvider>
+    <BrowserRouter>
+      <AuthProvider>
+        <ThemeProvider theme={theme}>
+          <Routes />
+        </ThemeProvider>
+      </AuthProvider>
+    </BrowserRouter>
   );
 }
 

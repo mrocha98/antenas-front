@@ -9,9 +9,11 @@ import {
   FaSignOutAlt,
 } from 'react-icons/fa';
 import { Typography } from '@material-ui/core';
+import { useAuth } from '../../contexts/auth';
 import './styles.scss';
 
 export default function Menu() {
+  const { signOut } = useAuth();
   return (
     <nav className="navbar">
       <ul className="navbar-nav">
@@ -65,12 +67,18 @@ export default function Menu() {
         </li>
 
         <li className="nav-item">
-          <NavLink to="/" exact className="nav-link">
+          <div
+            className="nav-link"
+            onClick={signOut}
+            onKeyPress={signOut}
+            role="button"
+            tabIndex="0"
+          >
             <FaSignOutAlt />
             <Typography component="span" className="link-text">
               Sair
             </Typography>
-          </NavLink>
+          </div>
         </li>
       </ul>
     </nav>
