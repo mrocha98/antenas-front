@@ -5,9 +5,16 @@ import PageContainer from '../../components/PageContainer';
 import AuthCard from '../../components/AuthCard';
 import AuthForm from '../../components/AuthForm';
 import Field from '../../components/Field';
+import { useAuth } from '../../contexts/auth';
 
 function Login() {
+  const { signIn } = useAuth();
   const history = useHistory();
+
+  async function handleSignIn() {
+    return signIn();
+  }
+
   return (
     <PageContainer>
       <Typography variant="h2" component="h1">
@@ -40,6 +47,7 @@ function Login() {
               type="submit"
               size="large"
               color="primary"
+              onClick={handleSignIn}
             >
               Confirmar
             </Button>

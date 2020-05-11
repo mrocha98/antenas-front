@@ -75,7 +75,7 @@ function Register() {
           <Button
             variant="text"
             color="primary"
-            onClick={() => history.push('/login')}
+            onClick={() => history.push('/')}
             style={{ marginTop: '1em' }}
           >
             Já tenho uma conta
