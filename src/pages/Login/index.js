@@ -1,6 +1,7 @@
 import React from 'react';
 import { Typography, TextField, Button, Divider } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
 import PageContainer from '../../components/PageContainer';
 import AuthCard from '../../components/AuthCard';
 import AuthForm from '../../components/AuthForm';
@@ -8,12 +9,14 @@ import Field from '../../components/Field';
 import { useAuth } from '../../contexts/auth';
 
 function Login() {
-  const { signIn } = useAuth();
   const history = useHistory();
+  const { handleSubmit, register } = useForm();
+  const { signIn } = useAuth();
 
-  async function handleSignIn() {
-    return signIn();
-  }
+  const onSubmit = (data, event) => {
+    event.preventDefault();
+    signIn(data.email, data.password);
+  };
 
   return (
     <PageContainer>
@@ -21,23 +24,30 @@ function Login() {
         Antenas
       </Typography>
       <AuthCard>
-        <AuthForm title="Autentique-se">
+        <AuthForm
+          title="Autentique-se"
+          onSubmit={handleSubmit(onSubmit)}
+          noValidate
+        >
           <Field>
             <TextField
-              required
+              name="email"
               label="E-mail"
               type="email"
+              autoComplete="email"
               variant="outlined"
+              inputRef={register}
               fullWidth
-              autoFocus
             />
           </Field>
           <Field>
             <TextField
-              required
+              name="password"
               label="Senha"
               type="password"
+              autoComplete="password"
               variant="outlined"
+              inputRef={register}
               fullWidth
             />
           </Field>
@@ -47,7 +57,6 @@ function Login() {
               type="submit"
               size="large"
               color="primary"
-              onClick={handleSignIn}
             >
               Confirmar
             </Button>

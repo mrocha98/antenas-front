@@ -8,6 +8,7 @@ export default function AuthRoutes() {
     <Switch>
       <Route path="/" exact component={Login} />
       <Route path="/register" component={Register} />
+      <Route path="*" component={Login} />
     </Switch>
   );
 }
