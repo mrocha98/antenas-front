@@ -1,4 +1,5 @@
 import React, { createContext, useState, useEffect, useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 import * as auth from '../services/auth';
 import api from '../services/api';
 
@@ -7,6 +8,7 @@ const AuthContext = createContext({});
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const history = useHistory();
 
   useEffect(() => {
     const storagedUser = localStorage.getItem('@Antenas:user');
@@ -19,8 +21,8 @@ export const AuthProvider = ({ children }) => {
     setLoading(false);
   }, []);
 
-  async function signIn() {
-    const response = await auth.signIn();
+  async function signIn(email, password) {
+    const response = await auth.signIn(email, password);
 
     localStorage.setItem('@Antenas:user', JSON.stringify(response.user));
     localStorage.setItem('@Antenas:token', response.token);
@@ -28,6 +30,7 @@ export const AuthProvider = ({ children }) => {
     api.defaults.headers.Authorization = `Bearer ${response.token}`;
 
     setUser(response.user);
+    history.push('/');
   }
 
   function signOut() {
