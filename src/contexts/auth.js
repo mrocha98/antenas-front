@@ -30,7 +30,7 @@ export const AuthProvider = ({ children }) => {
     api.defaults.headers.Authorization = `Bearer ${response.token}`;
 
     setUser(response.user);
-    history.push('/');
+    history.push('/dashboard');
   }
 
   function signOut() {
