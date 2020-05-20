@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Typography,
   TextField,
@@ -10,30 +10,57 @@ import {
 } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
 import { useForm, Controller } from 'react-hook-form';
+import UserTypes from '../../utils/UserTypes';
 import PageContainer from '../../components/PageContainer';
 import AuthCard from '../../components/AuthCard';
 import AuthForm from '../../components/AuthForm';
 import Field from '../../components/Field';
 import { useAuth } from '../../contexts/auth';
 import { register as createUser } from '../../services/auth';
+import CADIFields from './CadiFields';
+import EmpresarioFields from './EmpresarioFields';
 
 function Register() {
   const history = useHistory();
-  const { handleSubmit, register, control } = useForm();
+  const { handleSubmit, register, control, watch } = useForm();
   const { signIn } = useAuth();
+  const [selectedType, setSelectedType] = useState(UserTypes.ALUNO);
+  const typeWatcher = watch('type');
 
   const onSubmit = async (data, event) => {
     event.preventDefault();
     const isActive = true;
-    const created = await createUser(
-      data.name,
-      data.email,
-      data.password,
-      data.type,
-      isActive
-    );
-    if (created) return signIn(data.email, data.password);
-    return new Error('eita');
+
+    try {
+      const created = await createUser(
+        data.name,
+        data.email,
+        data.password,
+        data.type,
+        isActive
+      );
+      if (created) {
+        await signIn(data.email, data.password);
+        history.push('/');
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  useEffect(() => {
+    if (typeWatcher !== selectedType) setSelectedType(typeWatcher);
+  }, [typeWatcher, selectedType]);
+
+  const ExtraFields = () => {
+    switch (selectedType) {
+      case UserTypes.CADI:
+        return <CADIFields register={register} />;
+      case UserTypes.EMPRESARIO:
+        return <EmpresarioFields register={register} />;
+      default:
+        return null;
+    }
   };
 
   return (
@@ -86,18 +113,19 @@ function Register() {
             </InputLabel>
             <Controller
               name="type"
-              defaultValue={3}
+              defaultValue={UserTypes.ALUNO}
               control={control}
               as={
                 <Select variant="outlined" fullWidth>
-                  <MenuItem value={1}>Empresário</MenuItem>
-                  <MenuItem value={2}>CADI</MenuItem>
-                  <MenuItem value={3}>Aluno</MenuItem>
-                  <MenuItem value={4}>Professor</MenuItem>
+                  <MenuItem value={UserTypes.EMPRESARIO}>Empresário</MenuItem>
+                  <MenuItem value={UserTypes.CADI}>CADI</MenuItem>
+                  <MenuItem value={UserTypes.ALUNO}>Aluno</MenuItem>
+                  <MenuItem value={UserTypes.PROFESSOR}>Professor</MenuItem>
                 </Select>
               }
             />
           </Field>
+          <ExtraFields />
           <Field applyHugeDistance>
             <Button
               variant="contained"
@@ -109,12 +137,7 @@ function Register() {
             </Button>
           </Field>
           <Divider variant="middle" />
-          <Button
-            variant="text"
-            color="primary"
-            onClick={() => history.push('/')}
-            style={{ marginTop: '1em' }}
-          >
+          <Button variant="text" color="primary" style={{ marginTop: '1em' }}>
             Já tenho uma conta
           </Button>
         </AuthForm>
