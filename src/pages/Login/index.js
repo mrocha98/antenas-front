@@ -62,6 +62,7 @@ function Login() {
               variant="outlined"
               inputRef={register}
               fullWidth
+              autoFocus
             />
           </Field>
           {errors.password && (
