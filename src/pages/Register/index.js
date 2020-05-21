@@ -39,10 +39,7 @@ function Register() {
         data.type,
         isActive
       );
-      if (created) {
-        await signIn(data.email, data.password);
-        history.push('/');
-      }
+      if (created) await signIn(data.email, data.password);
     } catch (err) {
       console.error(err);
     }
@@ -137,7 +134,12 @@ function Register() {
             </Button>
           </Field>
           <Divider variant="middle" />
-          <Button variant="text" color="primary" style={{ marginTop: '1em' }}>
+          <Button
+            variant="text"
+            color="primary"
+            style={{ marginTop: '1em' }}
+            onClick={() => history.push('/login')}
+          >
             Já tenho uma conta
           </Button>
         </AuthForm>
