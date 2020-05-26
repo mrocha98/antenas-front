@@ -9,11 +9,9 @@ function App() {
   const theme = createMuiTheme({
     palette: {
       type: 'dark',
-      primary: {
+      primary: { main: '#177E89' },
+      error: {
         main: '#d65a31',
-      },
-      secondary: {
-        main: '#6baae6',
       },
     },
   });
