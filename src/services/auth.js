@@ -1,6 +1,6 @@
 import api from './api';
 
-export async function signIn(email, password) {
+export async function signIn({ email, password }) {
   const { data } = await api.post('/logon', { email, password });
 
   return {
@@ -9,7 +9,24 @@ export async function signIn(email, password) {
   };
 }
 
-export async function register(info) {
-  const { data } = await api.post('/register', info);
+export async function register({
+  name,
+  email,
+  password,
+  type,
+  position,
+  company,
+  cnpj,
+}) {
+  const { data } = await api.post('/register', {
+    name,
+    email,
+    password,
+    type,
+    position,
+    company,
+    cnpj,
+    isActive: true,
+  });
   return data;
 }

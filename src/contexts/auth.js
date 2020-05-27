@@ -21,8 +21,8 @@ export const AuthProvider = ({ children }) => {
     setLoading(false);
   }, []);
 
-  async function signIn(email, password) {
-    const response = await auth.signIn(email, password);
+  async function signIn({ email, password }) {
+    const response = await auth.signIn({ email, password });
 
     localStorage.setItem('@Antenas:user', JSON.stringify(response.user));
     localStorage.setItem('@Antenas:token', response.token);
