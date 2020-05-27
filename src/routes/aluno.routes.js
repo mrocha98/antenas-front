@@ -6,13 +6,15 @@ import Profile from '../layouts/aluno/profile';
 import NotFound from '../components/NotFound';
 
 export default function AlunoRoutes() {
+  const rootHash = 'aluno';
+  const baseUrl = `/${rootHash}`;
   return (
     <>
-      <Menu />
+      <Menu rootHash={rootHash} />
       <Switch>
-        <Route path="/aluno" exact component={Dashboard} />
-        <Route path="/aluno/profile" component={Profile} />
-        <Route path="/" exact render={() => <Redirect to="/aluno" />} />
+        <Route path={baseUrl} exact component={Dashboard} />
+        <Route path={`${baseUrl}/profile`} component={Profile} />
+        <Route path="/" exact render={() => <Redirect to={baseUrl} />} />
         <Route path="*" render={() => <NotFound />} />
       </Switch>
     </>

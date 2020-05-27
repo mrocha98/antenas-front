@@ -5,12 +5,14 @@ import Dashboard from '../layouts/cadi/dashboard';
 import NotFound from '../components/NotFound';
 
 export default function CadiRoutes() {
+  const rootHash = 'cadi';
+  const baseUrl = `/${rootHash}`;
   return (
     <>
-      <Menu />
+      <Menu rootHash={rootHash} />
       <Switch>
-        <Route path="/cadi" exact component={Dashboard} />
-        <Route path="/" exact render={() => <Redirect to="/cadi" />} />
+        <Route path={baseUrl} exact component={Dashboard} />
+        <Route path="/" exact render={() => <Redirect to={baseUrl} />} />
         <Route path="*" render={() => <NotFound />} />
       </Switch>
     </>
