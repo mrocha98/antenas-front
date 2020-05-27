@@ -2,17 +2,17 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import {
   FaSatelliteDish,
-  FaCuttlefish,
+  FaUserAlt,
   FaBriefcase,
-  FaUserNinja,
-  FaUserGraduate,
-  FaSignOutAlt,
+  FaCogs,
+  FaDoorOpen,
 } from 'react-icons/fa';
+import { GoGraph } from 'react-icons/go';
 import { Typography } from '@material-ui/core';
 import { useAuth } from '../../contexts/auth';
 import './styles.scss';
 
-export default function Menu() {
+export default function Menu({ rootHash }) {
   const { signOut } = useAuth();
   return (
     <nav className="navbar">
@@ -31,37 +31,37 @@ export default function Menu() {
         </li>
 
         <li className="nav-item">
-          <NavLink to="/cadi" className="nav-link">
-            <FaCuttlefish />
+          <NavLink exact to={`/${rootHash}`} className="nav-link">
+            <GoGraph />
             <Typography component="span" className="link-text">
-              CADI
+              Dashboard
             </Typography>
           </NavLink>
         </li>
 
         <li className="nav-item">
-          <NavLink to="/po" className="nav-link">
+          <NavLink to={`/${rootHash}/profile`} className="nav-link">
+            <FaUserAlt />
+            <Typography component="span" className="link-text">
+              Perfil
+            </Typography>
+          </NavLink>
+        </li>
+
+        <li className="nav-item">
+          <NavLink to={`/${rootHash}/projects`} className="nav-link">
             <FaBriefcase />
             <Typography component="span" className="link-text">
-              Empresário
+              Projetos
             </Typography>
           </NavLink>
         </li>
 
         <li className="nav-item">
-          <NavLink to="/professor" className="nav-link">
-            <FaUserGraduate />
+          <NavLink to={`/${rootHash}/settings`} className="nav-link">
+            <FaCogs />
             <Typography component="span" className="link-text">
-              Professor
-            </Typography>
-          </NavLink>
-        </li>
-
-        <li className="nav-item">
-          <NavLink to="/student" className="nav-link">
-            <FaUserNinja />
-            <Typography component="span" className="link-text">
-              Aluno
+              Configurações
             </Typography>
           </NavLink>
         </li>
@@ -74,7 +74,7 @@ export default function Menu() {
             role="button"
             tabIndex="0"
           >
-            <FaSignOutAlt />
+            <FaDoorOpen />
             <Typography component="span" className="link-text">
               Sair
             </Typography>
