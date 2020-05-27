@@ -22,7 +22,7 @@ export default function NotFound() {
       <div className="container">
         <Button
           color="secondary"
-          onClick={() => history.push('/dashboard')}
+          onClick={() => history.goBack()}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >

@@ -10,10 +10,10 @@ import IconButton from '@material-ui/core/IconButton';
 import Alert from '@material-ui/lab/Alert';
 import { useHistory } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import AuthCard from '../../components/AuthCard';
-import AuthForm from '../../components/AuthForm';
-import Field from '../../components/Field';
-import { useAuth } from '../../contexts/auth';
+import AuthCard from '../../../components/AuthCard';
+import AuthForm from '../../../components/AuthForm';
+import Field from '../../../components/Field';
+import { useAuth } from '../../../contexts/auth';
 import schema from './schema';
 
 function Login() {
@@ -67,7 +67,6 @@ function Login() {
                   variant="outlined"
                   inputRef={register}
                   fullWidth
-                  autoFocus
                   error={!!errors.email}
                   helperText={errors.email?.message}
                 />

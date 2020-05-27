@@ -1,0 +1,11 @@
+.landing-page {
+  text-align: center;
+
+  .buttons {
+    align-items: baseline;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 2rem;
+  }
+}

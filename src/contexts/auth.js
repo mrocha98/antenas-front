@@ -9,10 +9,15 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const history = useHistory();
+  const userKey = '@Antenas:user';
+  const tokenKey = '@Antenas:token';
+
+  const getUserInfo = () => localStorage.getItem(userKey);
+  const getTokenInfo = () => localStorage.getItem(tokenKey);
 
   useEffect(() => {
-    const storagedUser = localStorage.getItem('@Antenas:user');
-    const storagedToken = localStorage.getItem('@Antenas:token');
+    const storagedUser = getUserInfo();
+    const storagedToken = getTokenInfo();
 
     if (storagedUser && storagedToken) {
       setUser(JSON.parse(storagedUser));
@@ -24,24 +29,33 @@ export const AuthProvider = ({ children }) => {
   async function signIn({ email, password }) {
     const response = await auth.signIn({ email, password });
 
-    localStorage.setItem('@Antenas:user', JSON.stringify(response.user));
-    localStorage.setItem('@Antenas:token', response.token);
+    localStorage.setItem(userKey, JSON.stringify(response.user));
+    localStorage.setItem(tokenKey, response.token);
 
     api.defaults.headers.Authorization = `Bearer ${response.token}`;
 
     setUser(response.user);
-    history.push('/dashboard');
+
+    history.push('/');
   }
 
   function signOut() {
-    localStorage.removeItem('@Antenas:user');
-    localStorage.removeItem('@Antenas:token');
+    localStorage.removeItem(userKey);
+    localStorage.removeItem(tokenKey);
     setUser(null);
   }
 
   return (
     <AuthContext.Provider
-      value={{ signed: !!user, user, loading, signIn, signOut }}
+      value={{
+        signed: !!user,
+        user,
+        loading,
+        signIn,
+        signOut,
+        getUserInfo,
+        getTokenInfo,
+      }}
     >
       {children}
     </AuthContext.Provider>
