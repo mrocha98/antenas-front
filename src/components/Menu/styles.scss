@@ -7,12 +7,14 @@ $bg-secondary: $eden;
 $transition-speed: 400ms;
 
 .navbar {
-  position: fixed;
   background-color: $bg-primary;
+  position: fixed;
   transition: width 600ms ease;
   z-index: 10;
 
   &:hover {
+    box-shadow: 3px 0px 24px 0px rgba(26, 25, 26, 1);
+
     .logo {
       svg {
         transform: rotate(-180deg);
@@ -21,13 +23,13 @@ $transition-speed: 400ms;
   }
 
   .navbar-nav {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+    align-items: center;
     display: flex;
     flex-direction: column;
-    align-items: center;
     height: 100vh;
+    list-style: none;
+    margin: 0;
+    padding: 0;
   }
 
   .nav-item {
@@ -39,10 +41,10 @@ $transition-speed: 400ms;
   }
 
   .nav-link {
-    display: flex;
     align-items: center;
-    height: 5rem;
     color: $text-primary;
+    display: flex;
+    height: 5rem;
     text-decoration: none;
     transition: $transition-speed;
 
@@ -53,9 +55,9 @@ $transition-speed: 400ms;
     }
 
     svg {
-      width: 2rem;
-      min-width: 2rem;
       margin: 0 1.5rem;
+      min-width: 2rem;
+      width: 2rem;
     }
   }
 
@@ -65,14 +67,14 @@ $transition-speed: 400ms;
   }
 
   .logo {
+    background: $bg-secondary;
+    color: $text-secondary;
+    font-size: 1.5rem;
     font-weight: bold;
-    text-transform: uppercase;
+    letter-spacing: 0.3ch;
     margin-bottom: 1rem;
     text-align: center;
-    color: $text-secondary;
-    background: $bg-secondary;
-    font-size: 1.5rem;
-    letter-spacing: 0.3ch;
+    text-transform: uppercase;
     width: 100%;
 
     svg {
@@ -83,9 +85,9 @@ $transition-speed: 400ms;
 
   .logo-text {
     display: inline;
-    position: absolute;
-    left: -999px;
     font-size: 1.6em;
+    left: -999px;
+    position: absolute;
     transition: $transition-speed;
   }
 }
@@ -95,8 +97,8 @@ $transition-speed: 400ms;
   .navbar {
     align-items: center;
     bottom: 0;
-    height: 5rem;
     display: flex;
+    height: 5rem;
     width: 100vw;
 
     .logo {
@@ -123,9 +125,9 @@ $transition-speed: 400ms;
 /* Large screens */
 @media (min-width: 600px) {
   .navbar {
+    height: 100vh;
     top: 0;
     width: 5rem;
-    height: 100vh;
 
     .active {
       background: $bg-secondary;
@@ -133,12 +135,19 @@ $transition-speed: 400ms;
 
     .nav-link {
       font-size: 1.25rem;
+
+      .link-text {
+        opacity: 0;
+        transition: opacity 1.25s ease-in-out;
+      }
     }
 
     &:hover {
       width: 16rem;
+
       .link-text {
         display: inline;
+        opacity: 1;
       }
 
       .logo {
