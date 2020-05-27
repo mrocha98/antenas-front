@@ -13,8 +13,6 @@ $transition-speed: 400ms;
   z-index: 10;
 
   &:hover {
-    box-shadow: 3px 0px 24px 0px rgba(26, 25, 26, 1);
-
     .logo {
       svg {
         transform: rotate(-180deg);
@@ -143,6 +141,7 @@ $transition-speed: 400ms;
     }
 
     &:hover {
+      box-shadow: 3px 0px 7px 0px rgba(26, 25, 26, 1);
       width: 16rem;
 
       .link-text {
