@@ -14,12 +14,12 @@ import Alert from '@material-ui/lab/Alert';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import { useHistory } from 'react-router-dom';
 import { useForm, Controller } from 'react-hook-form';
-import UserTypes from '../../utils/UserTypes';
-import AuthCard from '../../components/AuthCard';
-import AuthForm from '../../components/AuthForm';
-import Field from '../../components/Field';
-import { useAuth } from '../../contexts/auth';
-import { register as createUser } from '../../services/auth';
+import UserTypes from '../../../utils/UserTypes';
+import AuthCard from '../../../components/AuthCard';
+import AuthForm from '../../../components/AuthForm';
+import Field from '../../../components/Field';
+import { useAuth } from '../../../contexts/auth';
+import { register as createUser } from '../../../services/auth';
 import schema from './schema';
 
 function Register() {
@@ -84,7 +84,6 @@ function Register() {
                   variant="outlined"
                   inputRef={register}
                   fullWidth
-                  autoFocus
                   error={!!errors.name}
                   helperText={errors.name?.message}
                 />

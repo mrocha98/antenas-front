@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { Ghost } from 'react-kawaii';
 import Button from '@material-ui/core/Button';
-import api from '../../services/api';
-import './styles.scss';
+import api from '../../../services/api';
+import { useAuth } from '../../../contexts/auth';
 
 export default function Home() {
   const [ghostMood, setGhostMood] = useState('happy');
+  const { getUserInfo } = useAuth();
+  const { name } = JSON.parse(getUserInfo());
 
   const handleMouseEnter = () => setGhostMood('blissful');
   const handleMouseLeave = () => setGhostMood('happy');
@@ -32,7 +34,7 @@ export default function Home() {
 
   return (
     <article className="page">
-      <h1>Home Page</h1>
+      <h1>Dashboard do Aluno {name}</h1>
       <Button variant="contained" color="primary" onClick={fetchData}>
         TESTE GRAPHQL
       </Button>

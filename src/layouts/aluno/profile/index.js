@@ -1,11 +1,9 @@
 import React from 'react';
 
-function Dummy() {
+export default function Profile() {
   return (
     <article className="page">
-      <h1>Dummy Page</h1>
+      <h1>Profile</h1>
     </article>
   );
 }
-
-export default Dummy;

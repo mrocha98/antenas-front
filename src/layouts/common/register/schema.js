@@ -1,5 +1,5 @@
 import * as yup from 'yup';
-import UserTypes from '../../utils/UserTypes';
+import UserTypes from '../../../utils/UserTypes';
 
 const schema = yup.object().shape({
   name: yup.string().trim().required('Nome é obrigatório'),
