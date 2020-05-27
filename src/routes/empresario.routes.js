@@ -5,12 +5,14 @@ import Dashboard from '../layouts/empresario/dashboard';
 import NotFound from '../components/NotFound';
 
 export default function EmpresarioRoutes() {
+  const rootHash = 'empresario';
+  const baseUrl = `/${rootHash}`;
   return (
     <>
-      <Menu />
+      <Menu rootHash={rootHash} />
       <Switch>
-        <Route path="/empresario" exact component={Dashboard} />
-        <Route path="/" exact render={() => <Redirect to="/empresario" />} />
+        <Route path={baseUrl} exact component={Dashboard} />
+        <Route path="/" exact render={() => <Redirect to={baseUrl} />} />
         <Route path="*" render={() => <NotFound />} />
       </Switch>
     </>

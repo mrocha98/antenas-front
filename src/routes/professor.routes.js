@@ -5,12 +5,14 @@ import Dashboard from '../layouts/professor/dashboard';
 import NotFound from '../components/NotFound';
 
 export default function ProfessorRoutes() {
+  const rootHash = 'professor';
+  const baseUrl = `/${rootHash}`;
   return (
     <>
-      <Menu />
+      <Menu rootHash={rootHash} />
       <Switch>
-        <Route path="/professor" exact component={Dashboard} />
-        <Route path="/" exact render={() => <Redirect to="/professor" />} />
+        <Route path={baseUrl} exact component={Dashboard} />
+        <Route path="/" exact render={() => <Redirect to={baseUrl} />} />
         <Route path="*" render={() => <NotFound />} />
       </Switch>
     </>
