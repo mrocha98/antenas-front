@@ -5,8 +5,8 @@ export default function Dashboard() {
   const { getUserInfo } = useAuth();
   const { name } = JSON.parse(getUserInfo());
   return (
-    <div>
-      <h1>Dashboard do Empresário {name}</h1>
-    </div>
+    <article className="page">
+      <h1>Bem-vindo(a) {name}!</h1>
+    </article>
   );
 }
