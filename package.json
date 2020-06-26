@@ -12,6 +12,7 @@
     "axios": "^0.19.2",
     "date-fns": "^2.12.0",
     "http-status-codes": "^1.4.0",
+    "nanoid": "^3.1.9",
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-datepicker": "^2.14.1",
@@ -21,6 +22,7 @@
     "react-kawaii": "^0.16.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
+    "uuid": "^8.1.0",
     "yup": "^0.28.5"
   },
   "scripts": {
