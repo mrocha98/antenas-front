@@ -155,24 +155,6 @@ function Register() {
                 />
                 <FormHelperText error>{errors.type?.message}</FormHelperText>
               </Field>
-              {selectedType === UserTypes.CADI && (
-                <Field>
-                  <Controller
-                    name="position"
-                    control={control}
-                    defaultValue=""
-                    as={
-                      <TextField
-                        label="Cargo"
-                        variant="outlined"
-                        fullWidth
-                        error={!!errors.position}
-                        helperText={errors.position?.message}
-                      />
-                    }
-                  />
-                </Field>
-              )}
               {selectedType === UserTypes.EMPRESARIO && (
                 <>
                   <Field>

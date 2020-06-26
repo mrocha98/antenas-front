@@ -9,24 +9,16 @@ export async function signIn({ email, password }) {
   };
 }
 
-export async function register({
-  name,
-  email,
-  password,
-  type,
-  position,
-  company,
-  cnpj,
-}) {
+export async function register({ name, email, password, type, company, cnpj }) {
   const { data } = await api.post('/register', {
     name,
     email,
     password,
     type,
-    position,
     company,
     cnpj,
     isActive: true,
+    position: 1,
   });
   return data;
 }

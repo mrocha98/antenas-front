@@ -14,10 +14,6 @@ const schema = yup.object().shape({
     .typeError('Escolha um tipo de usuário')
     .integer()
     .oneOf(Object.values(UserTypes)),
-  position: yup.string().when('type', {
-    is: UserTypes.CADI,
-    then: yup.string().required('Cargo é obrigatório'),
-  }),
   company: yup.string().when('type', {
     is: UserTypes.EMPRESARIO,
     then: yup.string().required('Nome da empresa é obrigatório'),
