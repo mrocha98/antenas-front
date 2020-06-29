@@ -1,12 +1,7 @@
 import React from 'react';
-import { useAuth } from '../../../contexts/auth';
+import DashboardComponent from '../../../components/Dashboard';
+import DashboardArt from '../../../assets/images/undraw_statistic_chart.svg';
 
 export default function Dashboard() {
-  const { getUserInfo } = useAuth();
-  const { name } = JSON.parse(getUserInfo());
-  return (
-    <article className="page">
-      <h1>Bem-vindo(a) {name}!</h1>
-    </article>
-  );
+  return <DashboardComponent artUrl={DashboardArt} />;
 }

@@ -8,7 +8,7 @@ import './styles/global.scss';
 function App() {
   const theme = createMuiTheme({
     palette: {
-      type: 'dark',
+      type: 'light',
       primary: { main: '#177E89' },
       error: {
         main: '#d65a31',

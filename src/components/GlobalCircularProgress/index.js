@@ -1,10 +1,9 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { CircularProgress } from '@material-ui/core';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const useStyles = makeStyles({
   container: {
-    backgroundColor: '#333',
     display: 'grid',
     height: '100vh',
     placeItems: 'center',
@@ -17,7 +16,7 @@ export default function GlobalCircularProgress() {
   const classes = useStyles();
   return (
     <div className={classes.container}>
-      <CircularProgress color="primary" size="6rem" />
+      <CircularProgress color="secondary" size="21rem" />
     </div>
   );
 }

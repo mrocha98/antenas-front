@@ -3,6 +3,7 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import { File } from 'react-kawaii';
 import { useHistory } from 'react-router-dom';
+import Page from '../Page';
 import './styles.scss';
 
 export default function NotFound() {
@@ -13,8 +14,7 @@ export default function NotFound() {
   const handleMouseLeave = () => setFileMood('ko');
 
   return (
-    <article className="page page--not_found">
-      <Typography variant="h1">Erro 404</Typography>
+    <Page title="Erro 404" className="page--not_found">
       <div className="container">
         <File mood={fileMood} color="#dfdfdf" />
       </div>
@@ -29,6 +29,6 @@ export default function NotFound() {
           Voltar à civilização
         </Button>
       </div>
-    </article>
+    </Page>
   );
 }

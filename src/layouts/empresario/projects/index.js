@@ -1,6 +1,6 @@
 import React from 'react';
 import { MdAddCircle, MdNewReleases } from 'react-icons/md';
-import Typography from '@material-ui/core/Typography';
+import Page from '../../../components/Page';
 import PaperMenu from '../../../components/PaperMenu';
 import ProjectCreation from '../../../components/ProjectCreation';
 import ProjectView from '../../../components/ProjectView';
@@ -17,11 +17,8 @@ export default function Projects() {
   ];
 
   return (
-    <article className="page">
-      <Typography component="h1" variant="h2">
-        Projetos
-      </Typography>
+    <Page title="Projetos">
       <PaperMenu tabs={tabs} panels={panels} />
-    </article>
+    </Page>
   );
 }

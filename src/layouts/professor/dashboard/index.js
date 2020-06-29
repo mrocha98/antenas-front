@@ -1,12 +1,7 @@
 import React from 'react';
-import { useAuth } from '../../../contexts/auth';
+import DashboardComponent from '../../../components/Dashboard';
+import DashboardArt from '../../../assets/images/undraw_professor.svg';
 
 export default function Dashboard() {
-  const { getUserInfo } = useAuth();
-  const { name } = JSON.parse(getUserInfo());
-  return (
-    <div>
-      <h1>Dashboard do Professor {name}</h1>
-    </div>
-  );
+  return <DashboardComponent artUrl={DashboardArt} />;
 }

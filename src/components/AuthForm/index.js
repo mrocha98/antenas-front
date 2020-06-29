@@ -7,21 +7,13 @@ const useStyles = makeStyles({
     textAlign: 'left',
     padding: '2rem',
   },
-  formTitle: {
-    textShadow: '3px 3px 4px black',
-  },
 });
 
 function AuthForm({ children, title, onSubmit, ...rest }) {
   const classes = useStyles();
   return (
     <>
-      <Typography
-        variant="h5"
-        component="h2"
-        align="center"
-        className={classes.formTitle}
-      >
+      <Typography variant="h5" component="h2" align="center">
         {title}
       </Typography>
       <section className={classes.formContainer}>

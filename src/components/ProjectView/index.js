@@ -6,7 +6,7 @@ import OutlinedInput from '@material-ui/core/OutlinedInput';
 import InputLabel from '@material-ui/core/InputLabel';
 import Alert from '@material-ui/lab/Alert';
 import AlertTitle from '@material-ui/lab/AlertTitle';
-import ProjectSelect from '../ProjectSelect';
+import AsyncAutocomplete from '../AsyncAutocomplete';
 import UserTypes from '../../utils/UserTypes';
 import Steps from '../../utils/Steps';
 import { useAuth } from '../../contexts/auth';
@@ -17,8 +17,21 @@ export default function ProjectView() {
   const { register, reset } = useForm();
   const { getUserInfo } = useAuth();
   const { email: ownerEmail } = JSON.parse(getUserInfo());
+  const [projects, setProjects] = useState([]);
   const [selectedProjectId, setSelectedProjectId] = useState('');
   const [stepMessage, setStepMessage] = useState('');
+
+  async function loadProjects() {
+    return api.post('/graphql', {
+      query: `query {
+      ProjectsByOwner(email: "${ownerEmail}", type: ${UserTypes.EMPRESARIO}) {
+          _id
+          title
+        }
+      }
+    `,
+    });
+  }
 
   useEffect(() => {
     async function loadData() {
@@ -48,9 +61,13 @@ export default function ProjectView() {
     <Container maxWidth="xs">
       <Grid container spacing={4}>
         <Grid item xs={12}>
-          <ProjectSelect
-            ownerEmail={ownerEmail}
-            ownerType={UserTypes.EMPRESARIO}
+          <AsyncAutocomplete
+            fetchData={loadProjects}
+            options={projects}
+            setOptions={setProjects}
+            label="Selecionar Projeto"
+            selectorName="ProjectsByOwner"
+            selectorValueName="title"
             handler={setSelectedProjectId}
           />
         </Grid>

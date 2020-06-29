@@ -1,0 +1,23 @@
+.page {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  margin-left: 5rem;
+  padding: 1rem;
+  text-align: center;
+
+  @media (max-width: 600px) {
+    margin: 0;
+    padding-bottom: 8rem;
+  }
+
+  .page-title {
+    margin-bottom: 2rem;
+  }
+
+  p {
+    align-self: flex-start;
+    text-align: justify;
+  }
+}

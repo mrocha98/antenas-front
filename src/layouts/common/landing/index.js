@@ -14,12 +14,16 @@ export default function Landing() {
           Projeto Antenas
         </h1>
         <div className="buttons">
-          <Button variant="contained" color="primary">
-            <Link to="/login">Login</Link>
-          </Button>
-          <Button variant="contained" color="secondary">
-            <Link to="/register">Criar Conta</Link>
-          </Button>
+          <Link to="/login">
+            <Button variant="contained" color="primary">
+              Login
+            </Button>
+          </Link>
+          <Link to="/register">
+            <Button variant="contained" color="secondary">
+              Criar Conta
+            </Button>
+          </Link>
         </div>
       </nav>
       <section className="landing-page-content">

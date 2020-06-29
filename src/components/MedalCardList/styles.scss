@@ -1,0 +1,13 @@
+.card-list {
+  align-items: flex-start;
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: repeat(auto-fill, minmax(256px, 1fr));
+  justify-content: stretch;
+  list-style: none;
+  width: 80%;
+
+  @media (min-width: 768px) {
+    gap: 2.75rem;
+  }
+}

@@ -1,0 +1,13 @@
+.page--aluno {
+  .expand-panel {
+    width: 100%;
+
+    @media (min-width: 768px) {
+      width: 90%;
+    }
+
+    @media (min-width: 1280px) {
+      width: 80%;
+    }
+  }
+}

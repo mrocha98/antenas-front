@@ -16,7 +16,7 @@
     }
 
     .buttons {
-      border-left: 3px solid $cultured;
+      border-left: 3px solid $gunmetal;
       padding-left: 3rem;
 
       button {
@@ -62,6 +62,7 @@
 
   footer {
     background-color: $charcoal;
+    color: $cultured;
     margin-top: 2rem;
     padding: 3rem;
   }

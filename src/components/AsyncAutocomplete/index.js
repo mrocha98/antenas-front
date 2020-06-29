@@ -2,16 +2,18 @@ import React, { useState, useEffect } from 'react';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import TextField from '@material-ui/core/TextField';
-import api from '../../services/api';
 
-export default function ProjectSelect({
-  ownerEmail,
-  ownerType,
+export default function AsyncAutocomplete({
   handler,
-  label = 'Selecionar projeto',
+  label,
+  options,
+  setOptions,
+  fetchData,
+  selectorName,
+  selectorValueName,
+  name,
 }) {
   const [open, setOpen] = useState(false);
-  const [options, setOptions] = useState([]);
   const loading = open && options.length === 0;
 
   useEffect(() => {
@@ -20,19 +22,14 @@ export default function ProjectSelect({
 
     async function loadProjects() {
       if (active) {
-        const req = await api.post('/graphql', {
-          query: `query {
-          ProjectsByOwner(email: "${ownerEmail}", type: ${ownerType}) {
-              _id
-              title
-            }
-          }
-        `,
-        });
-        const { ProjectsByOwner: projects } = req.data.data;
-        const formatedOptions = projects.reduce(
-          (newArr, { _id, title }) =>
-            newArr.concat({ name: title, value: _id }),
+        const req = await fetchData();
+        const selector = req.data.data[`${selectorName}`];
+        const formatedOptions = selector.reduce(
+          (newArr, option) =>
+            newArr.concat({
+              name: option[`${selectorValueName}`],
+              value: option['_id'],
+            }),
           []
         );
         const sortedOptions = formatedOptions.sort((actual, next) =>
@@ -47,11 +44,11 @@ export default function ProjectSelect({
     return () => {
       active = false;
     };
-  }, [loading, ownerEmail, ownerType]);
+  }, [fetchData, loading, selectorName, setOptions, selectorValueName]);
 
   useEffect(() => {
     if (!open) setOptions([]);
-  }, [open]);
+  }, [open, setOptions]);
 
   return (
     <Autocomplete
@@ -64,7 +61,7 @@ export default function ProjectSelect({
       }}
       getOptionSelected={(option, value) => option.name === value.name}
       getOptionLabel={(option) => option.name}
-      onChange={(event, value) => handler(value?.value)}
+      onChange={(event, value) => handler && handler(value?.value)}
       options={options}
       loading={loading}
       loadingText="Carregando..."
@@ -74,6 +71,7 @@ export default function ProjectSelect({
           {...params}
           label={label}
           variant="outlined"
+          name={name}
           InputProps={{
             ...params.InputProps,
             endAdornment: (
