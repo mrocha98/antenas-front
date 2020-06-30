@@ -4,11 +4,9 @@ import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 import InputLabel from '@material-ui/core/InputLabel';
-import Alert from '@material-ui/lab/Alert';
-import AlertTitle from '@material-ui/lab/AlertTitle';
 import AsyncAutocomplete from '../AsyncAutocomplete';
+import ProjectStatus from '../ProjectStatus';
 import UserTypes from '../../utils/UserTypes';
-import Steps from '../../utils/Steps';
 import { useAuth } from '../../contexts/auth';
 import api from '../../services/api';
 import Field from '../Field';
@@ -19,7 +17,6 @@ export default function ProjectView() {
   const { email: ownerEmail } = JSON.parse(getUserInfo());
   const [projects, setProjects] = useState([]);
   const [selectedProjectId, setSelectedProjectId] = useState('');
-  const [stepMessage, setStepMessage] = useState('');
 
   async function loadProjects() {
     return api.post('/graphql', {
@@ -42,17 +39,11 @@ export default function ProjectView() {
         linkOne,
         title
         quickDescription,
-        step
       }
     }`,
       });
-      const {
-        projectById,
-        projectById: { step: stepIndex },
-      } = req.data.data;
-
+      const { projectById } = req.data.data;
       reset({ ...projectById });
-      setStepMessage(Steps[stepIndex].status);
     }
     if (selectedProjectId) loadData();
   }, [selectedProjectId, reset]);
@@ -75,12 +66,7 @@ export default function ProjectView() {
           <section style={{ textAlign: 'left' }}>
             {!selectedProjectId ? null : (
               <>
-                <Field>
-                  <Alert variant="outlined" severity="info">
-                    <AlertTitle>Situação: </AlertTitle>
-                    {stepMessage}
-                  </Alert>
-                </Field>
+                <ProjectStatus projectId={selectedProjectId} />
                 <Field>
                   <InputLabel>Link</InputLabel>
                   <OutlinedInput
