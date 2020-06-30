@@ -3,10 +3,9 @@ import { useForm } from 'react-hook-form';
 import Container from '@material-ui/core/Container';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import Snackbar from '@material-ui/core/Snackbar';
-import Alert from '@material-ui/lab/Alert';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Field from '../Field';
+import PopUp from '../PopUp';
 import schema from './schema';
 import api from '../../services/api';
 
@@ -24,7 +23,11 @@ function MedalCreation() {
     message: '',
     severity: '',
   });
-  const hideTimeMs = 2500;
+
+  const onClosePopUp = () =>
+    setCreatedMedal((oldData) => {
+      return { ...oldData, display: false };
+    });
 
   const onSubmit = async (data, event) => {
     event.preventDefault();
@@ -50,7 +53,7 @@ function MedalCreation() {
         message: `Medalha ${createdTitle} criada com sucesso!`,
         severity: 'success',
       });
-      setTimeout(() => reset(), hideTimeMs);
+      reset();
     } catch (err) {
       setCreatedMedal({
         display: true,
@@ -63,20 +66,12 @@ function MedalCreation() {
   return (
     <Container maxWidth="xs">
       <form onSubmit={handleSubmit(onSubmit)}>
-        <Snackbar
-          open={createdMedal.display}
-          autoHideDuration={hideTimeMs}
-          anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-          onClose={() =>
-            setCreatedMedal((oldData) => {
-              return { ...oldData, display: false };
-            })
-          }
-        >
-          <Alert variant="outlined" severity={createdMedal.severity}>
-            {createdMedal.message}
-          </Alert>
-        </Snackbar>
+        <PopUp
+          display={createdMedal.display}
+          severity={createdMedal.severity}
+          message={createdMedal.message}
+          onClose={onClosePopUp}
+        />
         <Field>
           <TextField
             name="title"

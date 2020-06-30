@@ -3,10 +3,9 @@ import { useForm } from 'react-hook-form';
 import Container from '@material-ui/core/Container';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import Snackbar from '@material-ui/core/Snackbar';
-import Alert from '@material-ui/lab/Alert';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Field from '../Field';
+import PopUp from '../PopUp';
 import { useAuth } from '../../contexts/auth';
 import api from '../../services/api';
 import schema from './schema';
@@ -26,7 +25,11 @@ const ProjectCreation = () => {
     message: '',
     severity: '',
   });
-  const hideTimeMs = 2500;
+
+  const onClosePopUp = () =>
+    setCreatedProject((oldData) => {
+      return { ...oldData, display: false };
+    });
 
   const onSubmit = async (data, event) => {
     event.preventDefault();
@@ -57,7 +60,7 @@ const ProjectCreation = () => {
         message: `Projeto ${createdTitle} criado com sucesso!`,
         severity: 'success',
       });
-      setTimeout(() => reset(), hideTimeMs);
+      reset();
     } catch (err) {
       setCreatedProject({
         display: true,
@@ -70,20 +73,12 @@ const ProjectCreation = () => {
   return (
     <Container maxWidth="xs">
       <form onSubmit={handleSubmit(onSubmit)}>
-        <Snackbar
-          open={createdProject.display}
-          autoHideDuration={hideTimeMs}
-          anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-          onClose={() =>
-            setCreatedProject((oldData) => {
-              return { ...oldData, display: false };
-            })
-          }
-        >
-          <Alert variant="outlined" severity={createdProject.severity}>
-            {createdProject.message}
-          </Alert>
-        </Snackbar>
+        <PopUp
+          display={createdProject.display}
+          severity={createdProject.severity}
+          message={createdProject.message}
+          onClose={onClosePopUp}
+        />
         <Field>
           <TextField
             name="title"

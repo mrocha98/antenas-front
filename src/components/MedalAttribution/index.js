@@ -3,11 +3,10 @@ import { useForm, Controller } from 'react-hook-form';
 import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
 import InputLabel from '@material-ui/core/InputLabel';
-import Snackbar from '@material-ui/core/Snackbar';
-import Alert from '@material-ui/lab/Alert';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Select from 'react-select';
 import Field from '../Field';
+import PopUp from '../PopUp';
 import { arrayToOptions } from '../../helpers/ReactSelectHelper';
 import { useAuth } from '../../contexts/auth';
 import UserTypes from '../../utils/UserTypes';
@@ -21,7 +20,11 @@ function MedalAttribution() {
     message: '',
     severity: '',
   });
-  const hideTimeMs = 2500;
+
+  const onClosePopUp = () =>
+    setMedalAttributed((oldData) => {
+      return { ...oldData, display: false };
+    });
 
   const { getUserInfo } = useAuth();
   const { _id: teacherId } = JSON.parse(getUserInfo());
@@ -106,20 +109,12 @@ function MedalAttribution() {
   return (
     <Container maxWidth="xs">
       <form onSubmit={handleSubmit(onSubmit)}>
-        <Snackbar
-          open={medalAttributed.display}
-          autoHideDuration={hideTimeMs}
-          anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-          onClose={() =>
-            setMedalAttributed((oldData) => {
-              return { ...oldData, display: false };
-            })
-          }
-        >
-          <Alert variant="outlined" severity={medalAttributed.severity}>
-            {medalAttributed.message}
-          </Alert>
-        </Snackbar>
+        <PopUp
+          display={medalAttributed.display}
+          severity={medalAttributed.severity}
+          message={medalAttributed.message}
+          onClose={onClosePopUp}
+        />
         <Field>
           <InputLabel>Aluno</InputLabel>
           <Controller
