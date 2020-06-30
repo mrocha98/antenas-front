@@ -1,7 +1,14 @@
-import React, { createContext, useState, useEffect, useContext } from 'react';
+import React, {
+  createContext,
+  useState,
+  useEffect,
+  useContext,
+  useCallback,
+} from 'react';
 import { useHistory } from 'react-router-dom';
 import * as auth from '../services/auth';
 import api from '../services/api';
+import { createKey, clearAllRegisters } from '../utils/StorageKey';
 
 const AuthContext = createContext({});
 
@@ -9,11 +16,15 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const history = useHistory();
-  const userKey = '@Antenas:user';
-  const tokenKey = '@Antenas:token';
+  const userKey = createKey('user');
+  const tokenKey = createKey('token');
 
-  const getUserInfo = () => localStorage.getItem(userKey);
-  const getTokenInfo = () => localStorage.getItem(tokenKey);
+  const getUserInfo = useCallback(() => localStorage.getItem(userKey), [
+    userKey,
+  ]);
+  const getTokenInfo = useCallback(() => localStorage.getItem(tokenKey), [
+    tokenKey,
+  ]);
 
   useEffect(() => {
     const storagedUser = getUserInfo();
@@ -24,7 +35,7 @@ export const AuthProvider = ({ children }) => {
       api.defaults.headers.Authorization = `Bearer ${storagedToken}`;
     }
     setLoading(false);
-  }, []);
+  }, [getTokenInfo, getUserInfo]);
 
   async function signIn({ email, password }) {
     const response = await auth.signIn({ email, password });
@@ -40,8 +51,11 @@ export const AuthProvider = ({ children }) => {
   }
 
   function signOut() {
-    localStorage.removeItem(userKey);
-    localStorage.removeItem(tokenKey);
+    /**
+     * localStorage.clear() removes EVERYTHING, even data from other sites
+     * to prevent this, we use a function to remove only OUR data
+     */
+    clearAllRegisters();
     setUser(null);
   }
 
