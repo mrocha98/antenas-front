@@ -5,20 +5,21 @@ import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import TabPanel from '../TabPanel';
+import { createKey } from '../../utils/StorageKey';
 
 export default function PaperMenu({
   tabs = [],
   panels = [],
   initialTabIndex = 0,
 }) {
-  const key = '@Antenas/currentTab';
-  const cachedIndex = sessionStorage.getItem(key);
+  const key = createKey('currentTab');
+  const cachedIndex = localStorage.getItem(key);
   const [value, setValue] = useState(
     cachedIndex ? JSON.parse(cachedIndex) : initialTabIndex
   );
 
   const handleTabsChange = (event, newValue) => {
-    sessionStorage.setItem(key, newValue);
+    localStorage.setItem(key, newValue);
     setValue(newValue);
   };
 
