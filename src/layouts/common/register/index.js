@@ -132,12 +132,7 @@ function Register() {
                 />
               </Field>
               <Field>
-                <InputLabel
-                  style={{ marginBottom: '0.5rem' }}
-                  error={!!errors.type}
-                >
-                  Categoria
-                </InputLabel>
+                <InputLabel error={!!errors.type}>Categoria</InputLabel>
                 <Controller
                   name="type"
                   defaultValue=""
