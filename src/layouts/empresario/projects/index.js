@@ -3,7 +3,7 @@ import { MdAddCircle, MdNewReleases } from 'react-icons/md';
 import Page from '../../../components/Page';
 import PaperMenu from '../../../components/PaperMenu';
 import ProjectCreation from '../../../components/ProjectCreation';
-import ProjectView from '../../../components/ProjectView';
+import CheckProject from './checkProject';
 
 export default function Projects() {
   const tabs = [
@@ -13,7 +13,7 @@ export default function Projects() {
 
   const panels = [
     { content: <ProjectCreation /> },
-    { content: <ProjectView /> },
+    { content: <CheckProject /> },
   ];
 
   return (
