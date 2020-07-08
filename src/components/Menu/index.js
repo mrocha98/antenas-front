@@ -2,60 +2,85 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import {
   FaSatelliteDish,
-  FaCuttlefish,
+  FaUserAlt,
   FaBriefcase,
-  FaUserNinja,
-  FaUserGraduate,
-  FaSignOutAlt,
+  FaCogs,
+  FaDoorOpen,
 } from 'react-icons/fa';
-import { Nav } from './styles';
+import { GoGraph } from 'react-icons/go';
+import { Typography } from '@material-ui/core';
+import { useAuth } from '../../contexts/auth';
+import './styles.scss';
 
-export default function Menu() {
+export default function Menu({ rootHash }) {
+  const { signOut } = useAuth();
   return (
-    <Nav className="navbar">
+    <nav className="navbar">
       <ul className="navbar-nav">
         <li className="logo">
           <div className="nav-link">
-            <span className="link-text logo-text">Antenas</span>
+            <Typography
+              component="span"
+              variant="h5"
+              className="link-text logo-text"
+            >
+              Antenas
+            </Typography>
             <FaSatelliteDish />
           </div>
         </li>
 
         <li className="nav-item">
-          <NavLink to="/cadi" className="nav-link">
-            <FaCuttlefish />
-            <span className="link-text">CADI</span>
+          <NavLink exact to={`/${rootHash}`} className="nav-link">
+            <GoGraph />
+            <Typography component="span" className="link-text">
+              Dashboard
+            </Typography>
           </NavLink>
         </li>
 
         <li className="nav-item">
-          <NavLink to="/po" className="nav-link">
+          <NavLink to={`/${rootHash}/profile`} className="nav-link">
+            <FaUserAlt />
+            <Typography component="span" className="link-text">
+              Perfil
+            </Typography>
+          </NavLink>
+        </li>
+
+        <li className="nav-item">
+          <NavLink to={`/${rootHash}/projects`} className="nav-link">
             <FaBriefcase />
-            <span className="link-text">Empresário</span>
+            <Typography component="span" className="link-text">
+              Projetos
+            </Typography>
           </NavLink>
         </li>
 
         <li className="nav-item">
-          <NavLink to="/professor" className="nav-link">
-            <FaUserGraduate />
-            <span className="link-text">Professor</span>
+          <NavLink to={`/${rootHash}/settings`} className="nav-link">
+            <FaCogs />
+            <Typography component="span" className="link-text">
+              Configurações
+            </Typography>
           </NavLink>
         </li>
 
         <li className="nav-item">
-          <NavLink to="/student" className="nav-link">
-            <FaUserNinja />
-            <span className="link-text">Aluno</span>
-          </NavLink>
-        </li>
-
-        <li className="nav-item">
-          <NavLink to="/" className="nav-link">
-            <FaSignOutAlt />
-            <span className="link-text">Sair</span>
-          </NavLink>
+          <div
+            className="nav-link"
+            onClick={signOut}
+            onKeyPress={signOut}
+            role="button"
+            tabIndex="0"
+          >
+            <FaDoorOpen />
+            <Typography component="span" className="link-text">
+              Sair
+            </Typography>
+          </div>
         </li>
       </ul>
-    </Nav>
+    </nav>
   );
 }
