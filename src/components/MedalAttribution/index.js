@@ -86,7 +86,7 @@ function MedalAttribution() {
     try {
       const req = await api.post('/graphql', {
         query: `mutation {
-          giveMedal(_id: "${_id}", teacher: "${teacherId}", student: "${student}") {
+          giveMedal(_id: "${_id}", teacher: "${teacherId}", student: "${student}", level: 1) {
             title
           }
         }`,
