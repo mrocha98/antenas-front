@@ -64,7 +64,7 @@ function Approval() {
   }, [selectedUser]);
 
   return (
-    <Container maxWidth="xs" disableGutters>
+    <Container maxWidth="xl" disableGutters>
       <Field>
         <InputLabel>Empresário</InputLabel>
         <Select
@@ -94,6 +94,7 @@ function Approval() {
               <Field>
                 <ProjectView
                   projectId={selectedProject}
+                  isEditable={false}
                   defaultExpanded={false}
                 />
               </Field>

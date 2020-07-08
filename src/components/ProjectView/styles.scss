@@ -2,5 +2,11 @@
   .project-view__info {
     padding: 1rem;
     width: 100%;
+
+    .button-submit {
+      left: 50%;
+      transform: translateX(-50%);
+      width: 65%;
+    }
   }
 }

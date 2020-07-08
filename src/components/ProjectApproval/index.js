@@ -1,9 +1,9 @@
-/* eslint-disable react/jsx-boolean-value */
-import React, { useMemo, useState } from 'react';
+import React, { useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
-import TextField from '@material-ui/core/TextField';
+import OutlinedInput from '@material-ui/core/OutlinedInput';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
+import InputLabel from '@material-ui/core/InputLabel';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormLabel from '@material-ui/core/FormLabel';
 import Button from '@material-ui/core/Button';
@@ -13,6 +13,7 @@ import Field from '../Field';
 import PopUp from '../PopUp';
 import Step from '../../utils/Step';
 import api from '../../services/api';
+import { useAuth } from '../../contexts/auth';
 
 function ProjectApproval({ projectId }) {
   const { control, register, handleSubmit } = useForm({
@@ -25,15 +26,14 @@ function ProjectApproval({ projectId }) {
     severity: '',
   });
 
-  const stepOptions = useMemo(() => {
-    const cadiLevels = [1, 3, 4];
-    const cadiOptions = Step.filter((step) => cadiLevels.includes(step.level));
-    return arrayToOptions({
-      array: cadiOptions,
-      labelKey: 'action',
-      valueKey: 'level',
-    });
-  }, []);
+  const stepOptions = arrayToOptions({
+    array: Step,
+    labelKey: 'action',
+    valueKey: 'level',
+  });
+
+  const { getUserInfo } = useAuth();
+  const { _id: cadiId } = JSON.parse(getUserInfo());
 
   const onSubmit = async (data, event) => {
     event.preventDefault();
@@ -46,7 +46,7 @@ function ProjectApproval({ projectId }) {
     try {
       await api.post('/graphql', {
         query: `mutation {
-          updateProject(_id: "${projectId}", state: { aproved: ${aproved}, reason: "${reason}" }, step: "${step.value}") {
+          updateProject(_id: "${projectId}", state: { aproved: ${aproved}, reason: "${reason}" }, step: "${step.value}", cadiOwner: "${cadiId}") {
             title
           }
         }`,
@@ -109,12 +109,11 @@ function ProjectApproval({ projectId }) {
         />
       </Field>
       <Field>
-        <TextField
+        <InputLabel>Justificativa</InputLabel>
+        <OutlinedInput
           name="state.reason"
           inputRef={register}
           required
-          label="Justificativa"
-          variant="outlined"
           multiline
           fullWidth
         />

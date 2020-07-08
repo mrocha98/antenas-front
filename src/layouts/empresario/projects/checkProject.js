@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Select from 'react-select';
+import Container from '@material-ui/core/Container';
 import InputLabel from '@material-ui/core/InputLabel';
 import ProjectView from '../../../components/ProjectView';
 import Field from '../../../components/Field';
@@ -37,7 +38,7 @@ function CheckProject() {
   }, [email]);
 
   return (
-    <section>
+    <Container component="section" maxWidth="xl">
       <Field>
         <InputLabel>Projeto</InputLabel>
         <Select
@@ -47,8 +48,10 @@ function CheckProject() {
           placeholder="Selecionar projeto"
         />
       </Field>
-      {selectedProject && <ProjectView projectId={selectedProject} />}
-    </section>
+      {selectedProject && (
+        <ProjectView projectId={selectedProject} isEditable />
+      )}
+    </Container>
   );
 }
 
