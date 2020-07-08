@@ -33,7 +33,7 @@ function ProjectApproval({ projectId }) {
   });
 
   const { getUserInfo } = useAuth();
-  const { _id: cadiId } = JSON.parse(getUserInfo());
+  const { email } = JSON.parse(getUserInfo());
 
   const onSubmit = async (data, event) => {
     event.preventDefault();
@@ -46,7 +46,7 @@ function ProjectApproval({ projectId }) {
     try {
       await api.post('/graphql', {
         query: `mutation {
-          updateProject(_id: "${projectId}", state: { aproved: ${aproved}, reason: "${reason}" }, step: "${step.value}", cadiOwner: "${cadiId}") {
+          updateProject(_id: "${projectId}", state: { aproved: ${aproved}, reason: "${reason}" }, step: "${step.value}", cadiOwner: "${email}") {
             title
           }
         }`,
