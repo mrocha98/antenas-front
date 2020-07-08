@@ -1,23 +1,72 @@
-# Padrões de Projetos - 4º semestre de BD
+# Projeto Antenas (Front-End)
+
+![logo](public/apple-touch-icon.png)
 
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![style: styled-components](https://img.shields.io/badge/style-%F0%9F%92%85%20styled--components-orange.svg?colorB=daa357&colorA=db748e)](https://github.com/styled-components/styled-components)
+![GitHub](https://img.shields.io/github/license/mrocha98/projeto-antenas-react?color=%23)
+![GitHub repo size](https://img.shields.io/github/repo-size/mrocha98/projeto-antenas-react?color=%23)
+![GitHub language count](https://img.shields.io/github/languages/count/mrocha98/projeto-antenas-react?color=%23)
+![GitHub top language](https://img.shields.io/github/languages/top/mrocha98/projeto-antenas-react?color=%23)
+
+Padrões de Projetos - 4º semestre de BD
 
 Professor: Giuliano Bertoti
 
 Equipe:
 
-- Felipe da Silva Nunes Gomes - 1460281813012
 - Lucas Barcelos - 1460281923024
 - Matheus Rocha da Silva - 1460281823034
-- Othon Rafael Ferreira Godoy - 1460281723035
 
-## 1ª quinzena de maio
+## 🚚 Entregas
 
-Refatorando as telas iniciais do projeto, como as telas de login, criaçãod de usuário, etc.
+### 1ª quinzena de maio
 
-### Como executar a aplicação
+- Criação do menu.
+- Criação das telas de login e cadastro.
+- Integração com o back-end.
+
+### 2ª quinzena de maio
+
+- Separação das rotas por tipo de usuário.
+- Criação da landing page.
+
+### 1ª quinzena de junho
+
+- Criação de projeto a partir do empresário.
+- Criação do componente ProjectView para exibir os dados do projeto.
+- Criação de medalhas a partir do professor.
+- Atribuição de medalhas.
+
+### 2ª quinzena de junho
+
+- Refatoração do ProjectView para permitir edição.
+- Aprovação do CADI.
+- Preenchimento de mais campos pelo empresário.
+
+### 1ª quinzena de julho
+
+- Preenchimento de reunião pelo empresário.
+- Vinculação de alunos ao projeto a partir do professor.
+- Envio de entregas pelo aluno.
+
+## 📸 Capturas de tela
+
+![landing page](.github/images/landing-page.png)
+Página inicial (landing page)
+
+![account-creation](.github/images/account-creation.png)
+Criação de conta
+
+![dashboard](.github/images/dashboard.png)
+Dashboard do aluno
+
+![medals](.github/images/medals.png)
+Página de medalhas
+
+![project](.github/images/project.png)
+Acompanhamento de projeto
+
+## ⚙️ Como executar a aplicação
 
 Antes de tudo, instale as seguintes ferramentas:
 
@@ -41,7 +90,7 @@ yarn start
 
 Seu navegador padrão abrirá uma nova guia com o projeto em ambiente de desenvolvimento!
 
-### Como contribuir com o projeto
+## 🙌 Como contribuir com o projeto
 
 Sempre abra uma branch à partir da developer.
 
@@ -52,3 +101,13 @@ Nós utilizamos algumas ferramentas de padronização para commit, basta que voc
 Em caso de dúvidas, assista esse vídeo:
 
 [![Padronizando mensagens de commit do Git - RocketSeat](https://i.ytimg.com/vi/erInHkjxkL8/maxresdefault.jpg)](https://www.youtube.com/watch?v=erInHkjxkL8)
+
+## 📔 Trello
+
+Durante o desenvolvimento do projeto, criamos um quadro no Trello. Confira no link:
+
+<https://trello.com/b/hubCQsG0/projeto-antenas-c-stack-js>
+
+## 📜 Licença
+
+Este projeto foi criado sob a licença MIT.
