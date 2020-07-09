@@ -111,3 +111,21 @@ Durante o desenvolvimento do projeto, criamos um quadro no Trello. Confira no li
 ## 📜 Licença
 
 Este projeto foi criado sob a licença MIT.
+
+## 🤔 Extras
+
+Caso este projeto seja continuado por futuros alunos, deixo aqui alguns tópicos que podem ajudar:
+
+Eu criei um tutorial de React no Medium onde é desenvolvida uma pequena aplicação que busca dados de uma API pública.
+Confira no Link: 
+
+<https://medium.com/@mrocha98/crie-seu-primeiro-projeto-com-reactjs-16e340dfde1a>
+
+Se sentir muita dificuldade em acompanhar, sugiro revisar alguns tópicos de Javascript puro. Essa playlist é excelente:
+
+[![Javascript antes do framework - Origamid](https://i.ytimg.com/vi/j6iSONAO6sQ/hqdefault.jpg?sqp=-oaymwEXCNACELwBSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLBI9ZXLd_MgncIytgCBx9C_ROtoVg)](https://www.youtube.com/playlist?list=PL9rc_FjKlX39T78CUANwmdta_d1CgUtMt)
+
+Algumas bibliotecas que não foram utilizadas no projeto, mas que enxugariam muito código, além de dar mais produtividade, são:
+- [SWR](https://swr.vercel.app/)
+- [ahooks](https://ahooks.js.org/)
+- [Apollo Graphql](https://www.apollographql.com/docs/react/)
