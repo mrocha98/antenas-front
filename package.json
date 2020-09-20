@@ -13,7 +13,6 @@
     "axios": "^0.19.2",
     "http-status-codes": "^1.4.0",
     "nanoid": "^3.1.9",
-    "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-hook-form": "^5.7.1",
@@ -46,11 +45,6 @@
       "last 1 safari version"
     ]
   },
-  "husky": {
-    "hooks": {
-      "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true"
-    }
-  },
   "devDependencies": {
     "@commitlint/cli": "^9.1.2",
     "@commitlint/config-conventional": "^9.1.2",
@@ -65,7 +59,7 @@
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^4.1.0",
-    "husky": "^4.2.5",
+    "node-sass": "^4.14.1",
     "prettier": "^2.0.4"
   },
   "config": {
@@ -74,7 +68,7 @@
     }
   },
   "engines": {
-    "node": "12.x",
+    "node": "12.18.3",
     "npm": "6.x",
     "yarn": "1.x"
   }
