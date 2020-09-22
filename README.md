@@ -79,7 +79,7 @@ Clone o projeto no diretório de sua preferência:
 git clone https://github.com/mrocha98/projeto-antenas-react
 ```
 
-Para executar o back-end, consulte o repositório [Projeto Antenas Node](https://github.com/lucassbarcelos/ProjetoAntenas.node).
+Para executar o back-end, consulte o repositório [Projeto Antenas Node](https://github.com/mrocha98/antenas-back).
 
 Execute esses comandos dentro da pasta do projeto:
 
@@ -117,7 +117,7 @@ Este projeto foi criado sob a licença MIT.
 Caso este projeto seja continuado por futuros alunos, deixo aqui alguns tópicos que podem ajudar:
 
 Eu criei um tutorial de React no Medium onde é desenvolvida uma pequena aplicação que busca dados de uma API pública.
-Confira no Link: 
+Confira no Link:
 
 <https://medium.com/@mrocha98/crie-seu-primeiro-projeto-com-reactjs-16e340dfde1a>
 
