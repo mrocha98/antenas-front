@@ -2,8 +2,16 @@ module.exports = {
   env: {
     browser: true,
     es6: true,
+    jest: true,
   },
-  extends: ['plugin:react/recommended', 'airbnb', 'prettier', 'prettier/react'],
+  extends: [
+    'plugin:react/recommended',
+    'airbnb',
+    'prettier',
+    'prettier/react',
+    'plugin:jest-dom/recommended',
+    'plugin:testing-library/react',
+  ],
   globals: {
     Atomics: 'readonly',
     SharedArrayBuffer: 'readonly',
@@ -16,9 +24,9 @@ module.exports = {
     ecmaVersion: 2018,
     sourceType: 'module',
   },
-  plugins: ['react', 'react-hooks', 'prettier'],
+  plugins: ['react', 'react-hooks', 'prettier', 'jest-dom', 'testing-library'],
   rules: {
-    'prettier/prettier': 'warn',
+    'prettier/prettier': 'error',
     'react/jsx-filename-extension': ['warn', { extensions: ['.jsx', '.js'] }],
     'react/jsx-props-no-spreading': 'off',
     'import/prefer-default-export': 'off',
