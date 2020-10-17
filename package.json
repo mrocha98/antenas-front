@@ -4,7 +4,8 @@
   "private": false,
   "license": "MIT",
   "scripts": {
-    "start": "react-scripts start",
+    "start": "node server.js",
+    "start-dev": "react-script start",
     "build": "react-scripts build",
     "test": "react-scripts test --watchAll=false --env=jest-environment-jsdom-sixteen --coverage",
     "eject": "react-scripts eject"

@@ -1,0 +1,17 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: akhileshns/heroku-deploy@v3.5.7 # This is the action
+        with:
+          heroku_api_key: ${{secrets.HEROKU_STAGE}}
+          heroku_app_name: "antenas-front" #Must be unique in Heroku
+          heroku_email: "yan.rodrigues.azevedo@hotmail.com"
