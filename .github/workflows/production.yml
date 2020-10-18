@@ -9,7 +9,7 @@ on:
 
 jobs:
   deploy-master:
-    runs-on: self-hosted
+    runs-on: [ self-hosted, production ]
     strategy:
         matrix:
           node-version: [12.x]
