@@ -1,13 +1,14 @@
-name: Deploy-Develop
+name: "Deploy develop"
 
 on:
-  push:
-    branches: [ develop ]
-  pull_request:
-    branches: [ develop ]
+  workflow_run:
+      workflows: ["Run tests"]
+      branches: [ develop ]
+      types:
+        - completed
 
 jobs:
-  build:
+  deploy-develop:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
