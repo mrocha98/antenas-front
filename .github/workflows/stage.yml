@@ -8,7 +8,7 @@ on:
         - completed
 
 jobs:
-  deploy-master:
+  deploy-stage:
     runs-on: [ self-hosted, qa ]
     strategy:
         matrix:
