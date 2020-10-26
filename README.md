@@ -8,46 +8,96 @@
 ![GitHub language count](https://img.shields.io/github/languages/count/mrocha98/projeto-antenas-react?color=%23)
 ![GitHub top language](https://img.shields.io/github/languages/top/mrocha98/projeto-antenas-react?color=%23)
 
-Padrões de Projetos - 4º semestre de BD
+## Índice
 
-Professor: Giuliano Bertoti
+- [Projeto Antenas (Front-End)](#projeto-antenas-front-end)
+  - [Índice](#índice)
+  - [🤔 O que é](#-o-que-é)
+  - [⚽ Times](#-times)
+    - [Padrões de Projetos (4º semestre)](#padrões-de-projetos-4º-semestre)
+    - [Laboratório de Projeto Banco de Dados (5° semestre)](#laboratório-de-projeto-banco-de-dados-5-semestre)
+  - [🔬 Tecnologias utilizadas](#-tecnologias-utilizadas)
+  - [⚙️ Como executar a aplicação](#️-como-executar-a-aplicação)
+  - [📸 Capturas de tela](#-capturas-de-tela)
 
-Equipe:
+## 🤔 O que é
 
-- Lucas Barcelos - 1460281923024
-- Matheus Rocha da Silva - 1460281823034
+Aplicação web onde empresas da área de tecnologia propõem desafios, o conteúdo é avaliado pelos professores da Fatec e então enviado para que os alunos proponham soluções.
 
-## 🚚 Entregas
+Confira os outros repositórios:
 
-### 1ª quinzena de maio
+- [Back-End](https://github.com/mrocha98/antenas-back)
+- [Devops](https://github.com/mrocha98/antenas-devops)
 
-- Criação do menu.
-- Criação das telas de login e cadastro.
-- Integração com o back-end.
+## ⚽ Times
 
-### 2ª quinzena de maio
+### Padrões de Projetos (4º semestre)
 
-- Separação das rotas por tipo de usuário.
-- Criação da landing page.
+Professor Giuliano Bertoti
 
-### 1ª quinzena de junho
+Alunos:
 
-- Criação de projeto a partir do empresário.
-- Criação do componente ProjectView para exibir os dados do projeto.
-- Criação de medalhas a partir do professor.
-- Atribuição de medalhas.
+- Lucas Barcelos
+- Matheus Rocha da Silva
 
-### 2ª quinzena de junho
+### Laboratório de Projeto Banco de Dados (5° semestre)
 
-- Refatoração do ProjectView para permitir edição.
-- Aprovação do CADI.
-- Preenchimento de mais campos pelo empresário.
+Professor Eduardo Sakaue
 
-### 1ª quinzena de julho
+Alunos:
 
-- Preenchimento de reunião pelo empresário.
-- Vinculação de alunos ao projeto a partir do professor.
-- Envio de entregas pelo aluno.
+- Bruno Akira Ota
+- Carlos Henrique Monteiro Neto
+- Leticia Macedo Prudente de Carvalho
+- Matheus Rocha da Silva
+- Thaís Bitencourt de Meneses
+- Vanessa Bessa Diogenes Castellano
+- Yan Rodrigues de Azevedo
+
+## 🔬 Tecnologias utilizadas
+
+- ReactJS
+- React Hooks
+- Material UI
+- SASS
+
+## ⚙️ Como executar a aplicação
+
+Antes de tudo, instale as seguintes ferramentas:
+
+1. [NodeJS](https://nodejs.org/en/) (se você utiliza Linux ou Mac, recomendamos o [NVM](https://github.com/nvm-sh/nvm))
+2. [Yarn](https://yarnpkg.com/getting-started/install)
+
+Clone o projeto no diretório de sua preferência:
+
+```bash
+git clone https://github.com/mrocha98/antenas-react
+cd antenas-react
+```
+
+Crie o arquivo .env e copie o conteúdo do arquivo .env.example para dentro dele
+
+```bash
+cp -r .env.example .env
+```
+
+Instale as depêndencias do projeto
+
+```bash
+yarn install
+```
+
+Inicie a aplicação em modo de desenvolvimento
+
+```bash
+yarn start:dev
+```
+
+Seu navegador padrão abrirá uma nova guia com o projeto em execução!
+
+OBS: Esste projeto utiliza uma ferramenta de padronização de commits. Não passe a flag `-m` na hora de commitar, basta utilizar `git commit` que a cli será ativada. Confira uma demonstração nesse vídeo:
+
+[![Padronizando mensagens de commit do Git - RocketSeat](https://i.ytimg.com/vi/erInHkjxkL8/maxresdefault.jpg)](https://www.youtube.com/watch?v=erInHkjxkL8)
 
 ## 📸 Capturas de tela
 
@@ -65,67 +115,3 @@ Página de medalhas
 
 ![project](.github/images/project.png)
 Acompanhamento de projeto
-
-## ⚙️ Como executar a aplicação
-
-Antes de tudo, instale as seguintes ferramentas:
-
-1. [NodeJS](https://nodejs.org/en/) (se você utiliza Linux ou Mac, recomendamos o [NVM](https://github.com/nvm-sh/nvm))
-2. [Yarn](https://yarnpkg.com/getting-started/install)
-
-Clone o projeto no diretório de sua preferência:
-
-```bash
-git clone https://github.com/mrocha98/projeto-antenas-react
-```
-
-Para executar o back-end, consulte o repositório [Projeto Antenas Node](https://github.com/mrocha98/antenas-back).
-
-Execute esses comandos dentro da pasta do projeto:
-
-```bash
-yarn install
-yarn start
-```
-
-Seu navegador padrão abrirá uma nova guia com o projeto em ambiente de desenvolvimento!
-
-## 🙌 Como contribuir com o projeto
-
-Sempre abra uma branch à partir da developer.
-
-Faça um merge local da sua branch de feature na developer antes de abrir um Pull Request (`git pull origin developer`).
-
-Nós utilizamos algumas ferramentas de padronização para commit, basta que você execute `git commit` (sem o -m), seu terminal abrirá um menu de opções, escolha a categoria do commit e faça um breve comentário das suas mudanças.
-
-Em caso de dúvidas, assista esse vídeo:
-
-[![Padronizando mensagens de commit do Git - RocketSeat](https://i.ytimg.com/vi/erInHkjxkL8/maxresdefault.jpg)](https://www.youtube.com/watch?v=erInHkjxkL8)
-
-## 📔 Trello
-
-Durante o desenvolvimento do projeto, criamos um quadro no Trello. Confira no link:
-
-<https://trello.com/b/hubCQsG0/projeto-antenas-c-stack-js>
-
-## 📜 Licença
-
-Este projeto foi criado sob a licença MIT.
-
-## 🤔 Extras
-
-Caso este projeto seja continuado por futuros alunos, deixo aqui alguns tópicos que podem ajudar:
-
-Eu criei um tutorial de React no Medium onde é desenvolvida uma pequena aplicação que busca dados de uma API pública.
-Confira no Link:
-
-<https://medium.com/@mrocha98/crie-seu-primeiro-projeto-com-reactjs-16e340dfde1a>
-
-Se sentir muita dificuldade em acompanhar, sugiro revisar alguns tópicos de Javascript puro. Essa playlist é excelente:
-
-[![Javascript antes do framework - Origamid](https://i.ytimg.com/vi/j6iSONAO6sQ/hqdefault.jpg?sqp=-oaymwEXCNACELwBSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLBI9ZXLd_MgncIytgCBx9C_ROtoVg)](https://www.youtube.com/playlist?list=PL9rc_FjKlX39T78CUANwmdta_d1CgUtMt)
-
-Algumas bibliotecas que não foram utilizadas no projeto, mas que enxugariam muito código, além de dar mais produtividade, são:
-- [SWR](https://swr.vercel.app/)
-- [ahooks](https://ahooks.js.org/)
-- [Apollo Graphql](https://www.apollographql.com/docs/react/)
