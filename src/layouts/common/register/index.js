@@ -4,26 +4,32 @@ import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
-import Select from '@material-ui/core/Select';
 import IconButton from '@material-ui/core/IconButton';
 import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
 import Alert from '@material-ui/lab/Alert';
 import FormHelperText from '@material-ui/core/FormHelperText';
+import Select from 'react-select';
 import { useHistory } from 'react-router-dom';
 import { useForm, Controller } from 'react-hook-form';
 import UserTypes from '../../../utils/UserTypes';
+import emailRegex from '../../../utils/emailRegex';
 import AuthCard from '../../../components/AuthCard';
 import AuthForm from '../../../components/AuthForm';
 import Field from '../../../components/Field';
 import { useAuth } from '../../../contexts/auth';
 import { register as createUser } from '../../../services/auth';
-import schema from './schema';
 
 function Register() {
+  const typeOptions = [
+    { label: 'Empresário', value: UserTypes.EMPRESARIO },
+    { label: 'CADI', value: UserTypes.CADI },
+    { label: 'Aluno', value: UserTypes.ALUNO },
+    { label: 'Professor', value: UserTypes.PROFESSOR },
+  ];
+
   const history = useHistory();
   const {
     handleSubmit,
@@ -31,31 +37,28 @@ function Register() {
     control,
     watch,
     errors,
-    formState: { isSubmitting, isValid },
-  } = useForm({
-    validationSchema: schema,
-    mode: 'onBlur',
-  });
+    formState: { isSubmitting },
+  } = useForm({ mode: 'onChange' });
   const { signIn } = useAuth();
   const [registerError, setRegisterError] = useState({
     display: false,
     message: '',
   });
   const [showPassword, setShowPassword] = useState(true);
-  const selectedType = watch('type');
+  const selectedType = watch('type', 'value');
 
   const handleShowPassword = () => setShowPassword(!showPassword);
   const choosePasswordIcon = () => (showPassword ? <FaEye /> : <FaEyeSlash />);
 
-  const onSubmit = async (data, event) => {
-    event.preventDefault();
+  const onSubmit = async (data) => {
     const { name, email, password, type, position, company, cnpj } = data;
+    const { value: selectedValue } = type;
     try {
       const created = await createUser({
         name,
         email,
         password,
-        type,
+        type: selectedValue,
         position,
         company,
         cnpj,
@@ -90,7 +93,7 @@ function Register() {
                   label="Nome"
                   name="name"
                   variant="outlined"
-                  inputRef={register}
+                  inputRef={register({ required: 'Nome é obrigatório' })}
                   fullWidth
                   error={!!errors.name}
                   helperText={errors.name?.message}
@@ -102,7 +105,13 @@ function Register() {
                   name="email"
                   type="email"
                   variant="outlined"
-                  inputRef={register}
+                  inputRef={register({
+                    required: 'E-Mail é obrigatório',
+                    pattern: {
+                      value: emailRegex,
+                      message: 'Não esqueça do @ e do domínio',
+                    },
+                  })}
                   fullWidth
                   error={!!errors.email}
                   helperText={errors.email?.message}
@@ -114,7 +123,7 @@ function Register() {
                   name="password"
                   type={showPassword ? 'password' : 'text'}
                   variant="outlined"
-                  inputRef={register}
+                  inputRef={register({ required: 'Senha é obrigatória' })}
                   fullWidth
                   error={!!errors.password}
                   helperText={errors.password?.message}
@@ -135,53 +144,43 @@ function Register() {
                 <InputLabel error={!!errors.type}>Categoria</InputLabel>
                 <Controller
                   name="type"
-                  defaultValue=""
+                  defaultValue={UserTypes.ALUNO}
                   control={control}
-                  as={
-                    <Select variant="outlined" fullWidth error={!!errors.type}>
-                      <MenuItem value={UserTypes.EMPRESARIO}>
-                        Empresário
-                      </MenuItem>
-                      <MenuItem value={UserTypes.CADI}>CADI</MenuItem>
-                      <MenuItem value={UserTypes.ALUNO}>Aluno</MenuItem>
-                      <MenuItem value={UserTypes.PROFESSOR}>Professor</MenuItem>
-                    </Select>
-                  }
+                  as={Select}
+                  options={typeOptions}
+                  rules={{
+                    required: 'Escolha um tipo de usuário',
+                    validate: ({ value }) =>
+                      Object.values(UserTypes).includes(value) ||
+                      'Categoria não selecionada ou inválida',
+                  }}
                 />
                 <FormHelperText error>{errors.type?.message}</FormHelperText>
               </Field>
-              {selectedType === UserTypes.EMPRESARIO && (
+              {selectedType?.value === UserTypes.EMPRESARIO && (
                 <>
                   <Field>
-                    <Controller
+                    <TextField
                       name="company"
-                      control={control}
-                      defaultValue=""
-                      as={
-                        <TextField
-                          label="Nome da Empresa"
-                          variant="outlined"
-                          fullWidth
-                          error={!!errors.company}
-                          helperText={errors.company?.message}
-                        />
-                      }
+                      label="Nome da Empresa"
+                      variant="outlined"
+                      inputRef={register({
+                        required: 'Nome da empresa é obrigatório',
+                      })}
+                      fullWidth
+                      error={!!errors.company}
+                      helperText={errors.company?.message}
                     />
                   </Field>
                   <Field>
-                    <Controller
+                    <TextField
                       name="cnpj"
-                      control={control}
-                      defaultValue=""
-                      as={
-                        <TextField
-                          label="CNPJ"
-                          variant="outlined"
-                          fullWidth
-                          error={!!errors.cnpj}
-                          helperText={errors.cnpj?.message}
-                        />
-                      }
+                      label="CNPJ"
+                      variant="outlined"
+                      inputRef={register({ required: 'CNPJ é obrigatório' })}
+                      fullWidth
+                      error={!!errors.cnpj}
+                      helperText={errors.cnpj?.message}
                     />
                   </Field>
                 </>
@@ -195,7 +194,6 @@ function Register() {
                     type="submit"
                     size="large"
                     color="primary"
-                    disabled={!isValid}
                     fullWidth
                   >
                     Confirmar
