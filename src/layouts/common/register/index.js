@@ -31,10 +31,10 @@ function Register() {
     control,
     watch,
     errors,
-    formState: { isSubmitting, isValid },
+    formState: { isSubmitting },
   } = useForm({
     validationSchema: schema,
-    mode: 'onBlur',
+    mode: 'onChange',
   });
   const { signIn } = useAuth();
   const [registerError, setRegisterError] = useState({
@@ -47,8 +47,7 @@ function Register() {
   const handleShowPassword = () => setShowPassword(!showPassword);
   const choosePasswordIcon = () => (showPassword ? <FaEye /> : <FaEyeSlash />);
 
-  const onSubmit = async (data, event) => {
-    event.preventDefault();
+  const onSubmit = async (data) => {
     const { name, email, password, type, position, company, cnpj } = data;
     try {
       const created = await createUser({
@@ -195,7 +194,6 @@ function Register() {
                     type="submit"
                     size="large"
                     color="primary"
-                    disabled={!isValid}
                     fullWidth
                   >
                     Confirmar
