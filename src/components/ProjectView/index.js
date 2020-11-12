@@ -4,9 +4,9 @@ import OutlinedInput from '@material-ui/core/OutlinedInput';
 import Button from '@material-ui/core/Button';
 import InputLabel from '@material-ui/core/InputLabel';
 import Typography from '@material-ui/core/Typography';
-import ExpansionPanel from '@material-ui/core/ExpansionPanel';
-import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
-import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
+import Accordion from '@material-ui/core/Accordion';
+import AccordionDetails from '@material-ui/core/AccordionDetails';
+import AccordionSummary from '@material-ui/core/AccordionSummary';
 import { MdExpandMore } from 'react-icons/md';
 import ReunionField from '../ReunionField';
 import ProjectStatus from '../ProjectStatus';
@@ -107,11 +107,11 @@ export default function ProjectView({
 
   return (
     <section className="project-view">
-      <ExpansionPanel defaultExpanded={defaultExpanded}>
-        <ExpansionPanelSummary expandIcon={<MdExpandMore />}>
+      <Accordion defaultExpanded={defaultExpanded}>
+        <AccordionSummary expandIcon={<MdExpandMore />}>
           <Typography>Informações</Typography>
-        </ExpansionPanelSummary>
-        <ExpansionPanelDetails>
+        </AccordionSummary>
+        <AccordionDetails>
           <form
             className="project-view__info"
             onSubmit={handleSubmit(onSubmit)}
@@ -207,8 +207,8 @@ export default function ProjectView({
               </>
             )}
           </form>
-        </ExpansionPanelDetails>
-      </ExpansionPanel>
+        </AccordionDetails>
+      </Accordion>
     </section>
   );
 }
