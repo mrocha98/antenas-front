@@ -119,15 +119,13 @@ function MedalAttribution() {
           <InputLabel>Aluno</InputLabel>
           <Controller
             name="student"
+            instanceId="student"
             control={control}
-            as={
-              <Select
-                options={students}
-                isClearable
-                isSearchable
-                placeholder="Selecionar aluno..."
-              />
-            }
+            as={Select}
+            options={students}
+            isClearable
+            isSearchable
+            placeholder="Selecionar aluno..."
             rules={{ required: true }}
           />
         </Field>
@@ -135,8 +133,12 @@ function MedalAttribution() {
           <InputLabel>Medalha</InputLabel>
           <Controller
             name="medal"
+            instanceId="medal"
             control={control}
-            as={<Select options={medals} isClearable isSearchable />}
+            as={Select}
+            options={medals}
+            isClearable
+            isSearchable
             rules={{ required: true }}
           />
         </Field>

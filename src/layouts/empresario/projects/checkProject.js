@@ -42,6 +42,8 @@ function CheckProject() {
       <Field>
         <InputLabel>Projeto</InputLabel>
         <Select
+          name="project"
+          instanceId="project"
           isClearable
           options={projects}
           onChange={handleProjectChange}

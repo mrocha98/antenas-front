@@ -114,30 +114,26 @@ function Vinculation() {
           <InputLabel>Projeto</InputLabel>
           <Controller
             name="project"
+            instanceId="project"
             rules={{ required: true }}
             control={control}
-            as={
-              <Select
-                options={projects}
-                placeholder="Selecionar projeto"
-                noOptionsMessage={() => 'Sem projetos...'}
-              />
-            }
+            as={Select}
+            options={projects}
+            placeholder="Selecionar projeto"
+            noOptionsMessage={() => 'Sem projetos...'}
           />
         </Field>
         <Field>
           <InputLabel>Professor</InputLabel>
           <Controller
             name="professor"
+            instanceId="professor"
             rules={{ required: true }}
             control={control}
-            as={
-              <Select
-                options={professors}
-                placeholder="Selecionar professor"
-                noOptionsMessage={() => 'Nenhum professor encontrado...'}
-              />
-            }
+            as={Select}
+            options={professors}
+            placeholder="Selecionar professor"
+            noOptionsMessage={() => 'Nenhum professor encontrado...'}
           />
         </Field>
         <Field applyHugeDistance>

@@ -103,15 +103,13 @@ function Delivery() {
           <InputLabel>Projeto</InputLabel>
           <Controller
             name="project"
+            instanceId="project"
             control={control}
             rules={{ required: true }}
-            as={
-              <Select
-                options={projects}
-                placeholder="Selecione o projeto"
-                noOptionsMessage={() => 'Nenhum projeto encontrado...'}
-              />
-            }
+            as={Select}
+            placeholder="Selecione o projeto"
+            options={projects}
+            noOptionsMessage={() => 'Nenhum projeto encontrado...'}
           />
         </Field>
         <Field>

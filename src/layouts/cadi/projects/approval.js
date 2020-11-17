@@ -68,6 +68,8 @@ function Approval() {
       <Field>
         <InputLabel>Empresário</InputLabel>
         <Select
+          name="empresario"
+          instanceId="empresario"
           isClearable
           options={users}
           onChange={handleUserChange}
@@ -80,6 +82,8 @@ function Approval() {
           <Field>
             <InputLabel>Projeto</InputLabel>
             <Select
+              name="project"
+              instanceId="project"
               isClearable
               options={projects}
               onChange={handleProjectChange}

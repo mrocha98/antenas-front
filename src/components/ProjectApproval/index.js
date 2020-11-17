@@ -82,9 +82,12 @@ function ProjectApproval({ projectId }) {
         <FormLabel required>Etapa</FormLabel>
         <Controller
           name="step"
+          instanceId="step"
           control={control}
           rules={{ required: true }}
-          as={<Select options={stepOptions} placeholder="Selecione a etapa" />}
+          as={Select}
+          options={stepOptions}
+          placeholder="Selecione a etapa"
         />
       </Field>
       <Field>
